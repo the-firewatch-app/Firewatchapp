@@ -138,12 +138,85 @@
     /* SUPPORT / FAQ */
     .support-section { background: #0c0e14; padding: 80px 24px; border-top: 1px solid #1e2130; border-bottom: 1px solid #1e2130; }
     .support-inner { max-width: 760px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid #1e2130; padding: 24px 0; }
+ 
+    /* FAQ GROUP HEADERS */
+    .faq-group-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #F59260;
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(245,146,96,0.2);
+    }
+    .faq-group-label:first-of-type { margin-top: 0; }
+ 
+    /* COLLAPSIBLE FAQ ITEMS */
+    .faq-item {
+      border-bottom: 1px solid #1e2130;
+    }
     .faq-item:last-child { border-bottom: none; }
-    .faq-item h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
-    .faq-item p { font-size: 14px; color: #888; margin: 0; }
-    .faq-item a { color: #F59260; text-decoration: none; }
-    .faq-item a:hover { text-decoration: underline; }
+ 
+    .faq-toggle {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+    }
+    .faq-toggle h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      transition: color 0.2s;
+      flex: 1;
+    }
+    .faq-toggle:hover h3 { color: #F59260; }
+ 
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(245,146,96,0.1);
+      border: 1px solid rgba(245,146,96,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, background 0.2s;
+      color: #F59260;
+      font-size: 11px;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      background: rgba(245,146,96,0.2);
+    }
+ 
+    .faq-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-body {
+      max-height: 600px;
+    }
+    .faq-body-inner {
+      padding-bottom: 22px;
+    }
+    .faq-body p {
+      font-size: 14px;
+      color: #888;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .faq-body a { color: #F59260; text-decoration: none; }
+    .faq-body a:hover { text-decoration: underline; }
  
     /* LEGAL LINKS */
     .legal-section { padding: 60px 24px; }
@@ -275,50 +348,186 @@
     <h2 style="font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:8px;">Frequently Asked Questions</h2>
     <p style="color:#888;margin-bottom:40px;">Can't find what you're looking for? <a href="mailto:firewatchtravis@gmail.com" style="color:#F59260;">Email us</a>.</p>
  
+    <!-- GROUP: Readiness & Game Plan -->
+    <div class="faq-group-label">Readiness & Game Plan</div>
+ 
     <div class="faq-item">
-      <h3>How do I connect my wearable device?</h3>
-      <p>FireWatch reads data from Apple Health (iOS) or Google Health Connect (Android). Open the app, go to the Connect Device screen, and tap "Connect Apple Health" or "Connect Health Connect." Your wearable must already be syncing to one of these platforms.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>What's the difference between Operational Readiness and my Game Plan?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Operational Readiness answers "how ready am I right now?" — it's a snapshot based on sleep, HRV, and recent shift load. Your Game Plan answers "what should I do today?" — it's based on how much cumulative stress your system has absorbed. Think of readiness as your current fuel level, and the Game Plan as the maintenance schedule.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>My Garmin watch isn't showing HRV data — why?</h3>
-      <p>Garmin does not natively sync HRV data to Apple Health or Google Health Connect. To get full HRV-based readiness scoring, download the free app <strong>Health Sync</strong> from the App Store or Play Store, which bridges your Garmin HRV data into Apple Health or Health Connect.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>Why does my Game Plan say "Take It Easy" when my readiness score looks fine?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Your Game Plan and your Operational Readiness score measure different things. Readiness reflects how you feel right now — based on last night's sleep and this morning's HRV. Your Game Plan looks at how hard your body has been working over the past week, using your shift strain and burnout trend. A week of heavy calls can push your Game Plan into recovery mode even on a day when your sleep and HRV are solid.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>How do I create or join a crew?</h3>
-      <p>Go to the Crew tab in the app. Tap "Create Crew" to start a new crew and get a shareable join code. Share that code with your crew members so they can join by tapping "Join Crew" and entering the code.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>Can my readiness score be high and my Game Plan still say to recover?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Yes, and it's actually common. A good night's sleep can lift your readiness score, but it doesn't erase a week of back-to-back busy shifts. FireWatch tracks both signals separately so one doesn't mask the other.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>How do I delete my account and data?</h3>
-      <p>Go to the Profile tab → scroll to the bottom → tap "Delete Account." This permanently deletes all your data from our servers and your device. This action cannot be undone. You can also request deletion by emailing <a href="mailto:firewatchtravis@gmail.com">firewatchtravis@gmail.com</a>.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>What actually drives my Game Plan?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Three things: your shift strain score from recent calls, your 7-day burnout trend, and your 30-day burnout trend. If any one of those climbs high enough, your Game Plan shifts accordingly — regardless of how your readiness number looks that day.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>Is my health data shared with anyone?</h3>
-      <p>No. Your health data is never sold or shared with third parties. It is used only to calculate your readiness scores within the app. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>When does my Game Plan go into "Recovery Priority"?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>When your system is significantly depleted — either a single shift with extreme strain, or a sustained stretch of heavy weeks that's pushed your burnout trend high. At that point FireWatch prioritizes recovery above everything else, regardless of how today's metrics look individually.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- GROUP: Devices & Data -->
+    <div class="faq-group-label">Devices & Data</div>
+ 
+    <div class="faq-item">
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>How do I connect my wearable device?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>FireWatch reads data from Apple Health (iOS) or Google Health Connect (Android). Open the app, go to the Connect Device screen, and tap "Connect Apple Health" or "Connect Health Connect." Your wearable must already be syncing to one of these platforms.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>What wearables are supported?</h3>
-      <p>Any wearable that syncs to Apple Health (iOS) or Google Health Connect (Android) is supported. This includes Apple Watch, Garmin, Fitbit, Oura Ring, Polar, Whoop, and most other major fitness wearables. Note that some devices may not share all data types — see our connect screen for compatibility details.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>What wearables are supported?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Any wearable that syncs to Apple Health (iOS) or Google Health Connect (Android) is supported. This includes Apple Watch, Garmin, Fitbit, Oura Ring, Polar, Whoop, and most other major fitness wearables. Note that some devices may not share all data types — see our connect screen for compatibility details.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>How do I cancel my subscription?</h3>
-      <p>Subscriptions are managed through the Apple App Store or Google Play Store. To cancel, go to your device's subscription settings and cancel FireWatch. You will retain access to premium features until the end of your current billing period.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>My Garmin watch isn't showing HRV data — why?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Garmin does not natively sync HRV data to Apple Health or Google Health Connect. To get full HRV-based readiness scoring, download the free app <strong>Health Sync</strong> from the App Store or Play Store, which bridges your Garmin HRV data into Apple Health or Health Connect.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>Is FireWatch a medical device?</h3>
-      <p>No. FireWatch is a personal wellness and operational readiness tool. It is not a medical device and should never be used to make fitness-for-duty decisions. Always follow your department's policies for duty-related decisions.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>Is my health data shared with anyone?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>No. Your health data is never sold or shared with third parties. It is used only to calculate your readiness scores within the app. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- GROUP: Account & Crew -->
+    <div class="faq-group-label">Account & Crew</div>
+ 
+    <div class="faq-item">
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>How do I create or join a crew?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Go to the Crew tab in the app. Tap "Create Crew" to start a new crew and get a shareable join code. Share that code with your crew members so they can join by tapping "Join Crew" and entering the code.</p>
+        </div>
+      </div>
     </div>
  
     <div class="faq-item">
-      <h3>I found a bug or have a feature request</h3>
-      <p>Please email us at <a href="mailto:firewatchtravis@gmail.com">firewatchtravis@gmail.com</a> with details. We read every message and appreciate your feedback.</p>
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>How do I cancel my subscription?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Subscriptions are managed through the Apple App Store or Google Play Store. To cancel, go to your device's subscription settings and cancel FireWatch. You will retain access to premium features until the end of your current billing period.</p>
+        </div>
+      </div>
     </div>
+ 
+    <div class="faq-item">
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>How do I delete my account and data?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Go to the Profile tab → scroll to the bottom → tap "Delete Account." This permanently deletes all your data from our servers and your device. This action cannot be undone. You can also request deletion by emailing <a href="mailto:firewatchtravis@gmail.com">firewatchtravis@gmail.com</a>.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- GROUP: General -->
+    <div class="faq-group-label">General</div>
+ 
+    <div class="faq-item">
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>Is FireWatch a medical device?</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>No. FireWatch is a personal wellness and operational readiness tool. It is not a medical device and should never be used to make fitness-for-duty decisions. Always follow your department's policies for duty-related decisions.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <button class="faq-toggle" aria-expanded="false">
+        <h3>I found a bug or have a feature request</h3>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>Please email us at <a href="mailto:firewatchtravis@gmail.com">firewatchtravis@gmail.com</a> with details. We read every message and appreciate your feedback.</p>
+        </div>
+      </div>
+    </div>
+ 
   </div>
 </div>
  
@@ -368,6 +577,24 @@
   </p>
 </footer>
  
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+ 
 </body>
 </html>
- 
